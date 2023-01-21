@@ -9,9 +9,7 @@ grow.post("/calculate", async (req, res) => {
     return res.status(400).json({ error: "Missing input data" });
   }
   const interestRate = annualInterestRate / 100;
-  const totalMaturityValue =
-    annualInstalmentAmount *
-    ((((1 + interestRate) ** totalYears) - 1) / interestRate);
+  const totalMaturityValue = annualInstalmentAmount * (1 + interestRate) ** totalYears;
   const totalInvestmentAmount = annualInstalmentAmount * totalYears;
   const totalInterestGained = totalMaturityValue - totalInvestmentAmount;
   res.json({
